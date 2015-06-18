@@ -10,9 +10,11 @@ phutil_register_library_map(array(
   '__library_version__' => 2,
   'class' => array(
     'PhabricatorYubikeyAuthFactor' => 'extensions/auth/factor/PhabricatorYubikeyAuthFactor.php',
+    'PhabricatorYubikeyConfigOptions' => 'extensions/config/option/PhabricatorYubikeyConfigOptions.php',
   ),
   'function' => array(),
   'xmap' => array(
     'PhabricatorYubikeyAuthFactor' => 'PhabricatorAuthFactor',
+    'PhabricatorYubikeyConfigOptions' => 'PhabricatorApplicationConfigOptions',
   ),
 ));
