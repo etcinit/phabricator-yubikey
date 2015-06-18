@@ -1,8 +1,8 @@
-#phabricator-yubikey
+#[phabricator-yubikey](https://github.com/etcinit/phabricator-yubikey)
 
 Adds support for Yubikey OTP as MFA method in Phabricator
 
-### About
+## About
 
 ### The good
 
