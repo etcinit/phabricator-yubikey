@@ -1,0 +1,7 @@
+{
+  "project.name" : "phabricator-yubikey",
+  "load" : [
+    "phabricator/src/",
+    "src/"
+  ]
+}
