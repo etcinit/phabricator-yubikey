@@ -26,7 +26,12 @@ final class PhabricatorYubikeyAuthFactor extends PhabricatorAuthFactor {
     $codes = [];
     $e_codes = [];
     for ($ii = 0; $ii < self::SETUP_ROUNDS; $ii++) {
-      $codes[$ii] = $request->getStr('yubiotpcode'.$ii);
+      $codeRaw = $request->getStr('yubiotpcode'.$ii);
+
+      // Only read the first line.
+      $code = explode("\r\n", $codeRaw)[0];
+
+      $codes[$ii] = $code;
       $e_codes[$ii] = true;
     }
 
@@ -91,9 +96,10 @@ final class PhabricatorYubikeyAuthFactor extends PhabricatorAuthFactor {
 
     for ($ii = 0; $ii < self::SETUP_ROUNDS; $ii++) {
       $form->appendChild(
-        id(new AphrontFormTextControl())
-          ->setLabel(pht('OTP Code #%i:', $ii))
+        id(new AphrontFormTextAreaControl())
+          ->setLabel(pht('OTP Code #%d:', $ii))
           ->setName('yubiotpcode'.$ii)
+          ->setHeight(AphrontFormTextAreaControl::HEIGHT_VERY_SHORT)
           ->setValue($codes[$ii])
           ->setError($e_codes[$ii]));
     }
